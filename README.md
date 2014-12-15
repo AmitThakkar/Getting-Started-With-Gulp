@@ -18,7 +18,7 @@ NOTE: In your project directory, a ```node_modules``` named directory will be cr
 Now gulp will say what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create a empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
 
 **gulpfile.js**
-```
+```JavaScipt
 //  Requiring gulp
 var gulp = require('gulp');
 // Defining default task, which will execute when we type simply gulp.
@@ -31,10 +31,38 @@ gulp.task('default', function () {
 
 Now type ```gulp``` or ```gulp default``` it will execute default task and will print our ```console.log```.
 
-```
+```Output
 Using gulpfile ~/Projects/Getting-Started-With-Gulp/gulpfile.js
 Starting 'default'...
 Hello from default gulp task.
 Finished 'default' after 100 μs
 ```
+
+Lets write a custom task, which first will minify/compress all the ```.js``` files from js directory then store all minified/compress files to build/js directive, and will watch all the js files which are present in js directory, if any changes happen to those ```.js``` files, then it will re-minify/re-compress all the ```.js``` files, and overwrite all old minified/compressed files with latest minified/compressed files in build/js directory.
+
+**gulpfile.js**
+```JavaScript
+var gulp = require('gulp'),
+    uglify = require('gulp-uglify');
+function errorLog(error) {
+    console.error(error);
+    this.emit('end');
+}
+// Scripts Task
+// Uglify
+gulp.task('scripts', function () {
+    gulp.src('js/*.js')
+        .pipe(uglify())
+        .on('error', errorLog)
+        .pipe(gulp.dest('build/js'));
+});
+// Watch Task
+// Watches JS
+gulp.task('watch', function () {
+    gulp.watch('js/*.js', ['scripts']);
+});
+gulp.task('default', ['scripts', 'watch']);
+```
+
+> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files.
 
