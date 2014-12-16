@@ -2,18 +2,18 @@
 
 ####This repository contains getting started guild with Gulp.
 
-Now a days, a **JavaScript** task runner getting very famous. Yes that is **Gulp**. Many of us confuse between **Gulp** and **Grunt**. But why did I choose **Gulp**?
+Now a days, a **JavaScript** task runner is getting very famous. Yes that is **Gulp**. Many of us confuse between **Gulp** and **Grunt**. But why did I choose **Gulp**?
 
 > **Gulp** is faster and simpler then **Grunt**. And I prefer **Gulp**, because we write **Gulp** tasks in **JavaScript** language, and as I am **JavaScript** lover + developer so I feel pretty happy and confident to write **Gulp** tasks. Trust me. if you are **JavaScript** developer/lover then you are going to love **Gulp** task runner.
 
 We are not going to discuss **Gulp** vs **Grunt** in details. You will find lots of blog, which discuss **Gulp** vs **Grunt**. Here we will learn how to write **Gulp** tasks.
 
-Lets file install **Gulp** into the system:
+Lets first install **Gulp** into the system:
 
 1. Install **Gulp** globally with command ```npm install -g gulp```. If you facing permission error, run same command with sudo as ```sudo npm install -g gulp```.
 
 2. Install **Gulp** into your project with command ```npm install --save-dev gulp```. If you facing permission error, run same command with sudo as ```sudo npm install --save-dev gulp```.
-NOTE: In your project directory, a ```node_modules``` named directory will be created after running the above command ```npm install --save-dev gulp```.
+**NOTE:** In your project directory, a ```node_modules``` named directory will be created after running the above command ```npm install --save-dev gulp```.
 
 Now gulp will say what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create a empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
 
@@ -27,7 +27,9 @@ gulp.task('default', function () {
 });
 ```
 
-**Gulp** provide ```gulp.task()``` api to create custom tasks, first arguments is name of task, and second argument can be task **function** or array of task **function** which will be execute when that task will be execute. When we type ```gulp``` command, then **Gulp** will execute task, which is followed by ```gulp``` command. e.g. ```gulp t1``` will execute t1 named task. And if we do not provide any task name after ```gulp``` command then by default it execute **default** task. So when we were typing only ```gulp```, it was showing error message **Task 'default' is not in your gulpfile**.
+**Gulp** provide ```gulp.task()``` api to create custom tasks, first arguments is name of task, and second argument can be task **function** or array of task **function** which will be execute when that task will be execute.
+
+When we type ```gulp``` command, then **Gulp** will execute task, which is followed by ```gulp``` command. e.g. ```gulp t1``` will execute t1 named task. And if we do not provide any task name after ```gulp``` command then by default it execute **default** task. So when we were typing only ```gulp```, it was showing error message **Task 'default' is not in your gulpfile**.
 
 Now type ```gulp``` or ```gulp default``` it will execute default task and will print our ```console.log```.
 
@@ -40,7 +42,7 @@ Finished 'default' after 100 μs
 
 Lets write a custom task, which first will minify/compress all the ```.js``` files from js directory then store all minified/compress files to build/js directive, and will watch all the js files which are present in js directory, if any changes happen to those ```.js``` files, then it will re-minify/re-compress all the ```.js``` files, and overwrite all old minified/compressed files with latest minified/compressed files in build/js directory.
 
-**gulpfile.js**
+**Updated gulpfile.js**
 ```JavaScript
 var gulp = require('gulp'),
     uglify = require('gulp-uglify');
@@ -68,6 +70,8 @@ gulp.task('default', ['scripts', 'watch']);
 
 In the above **gulpfile.js**, we have write 3 tasks:
 
-1. scripts: This task is for minifing all the ```.js``` files from **js** directory, and store into **build/js** directory. We are handing **error** event and printing error on console, so **Gulp** does not get stop, otherwise if there will any error while minifing the ```.js``` files, **gulp** will error and will get stop.
-2. watch: This task watches all the ```.js``` files from **js** directory, and any of then ```.js``` file get change, it will execute **scripts** task.
-3. default: This is our **default** task, which execute first **scripts** task and then **watch** task.
+1. **scripts:** This task is for minifing all the ```.js``` files from **js** directory, and store into **build/js** directory. We are handing **error** event and printing error on console, so **Gulp** does not get stop, otherwise if there will any error while minifing the ```.js``` files, **gulp** will error and will get stop.
+2. **watch:** This task watches all the ```.js``` files from **js** directory, and any of then ```.js``` file get change, it will execute **scripts** task.
+3. **default:** This is our **default** task, which execute first **scripts** task and then **watch** task.
+
+**Note**: If you want execute only **watch** task or  **scripts** task, then type ```gulp watch``` or ```gulp scripts``` respectively.
