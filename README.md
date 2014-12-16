@@ -66,7 +66,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['scripts', 'watch']);
 ```
 
-> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files.
+> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files. And it remove all comments and unused code from source JavaScript files.
 
 In the above **gulpfile.js**, we have write 3 tasks:
 
