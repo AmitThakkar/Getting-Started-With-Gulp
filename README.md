@@ -66,3 +66,7 @@ gulp.task('default', ['scripts', 'watch']);
 
 > **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files.
 
+In the above **gulpfile.js**, we have write 3 tasks:
+1. scripts: This task is for minifing all the ```.js``` files from **js** directory, and store into **build/js** directory. We are handing **error** event and printing error on console, so **Gulp** does not get stop, otherwise if there will any error while minifing the ```.js``` files, **gulp** will error and will get stop.
+2. watch: This task watches all the ```.js``` files from **js** directory, and any of then ```.js``` file get change, it will execute **scripts** task.
+3. default: This is our **default** task, which execute first **scripts** task and then **watch** task.
