@@ -16,7 +16,7 @@ Lets first install **Gulp** into the system:
 
 **NOTE:** In your project directory, a ```node_modules``` named directory will be created after running the above command ```npm install --save-dev gulp```.
 
-Now gulp will say what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create an empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
+Now gulp will tell us what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create an empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
 
 **gulpfile.js**
 ```JavaScript
