@@ -16,7 +16,7 @@ Lets first install **Gulp** into the system:
 
 **NOTE:** In your project directory, a ```node_modules``` named directory will be created after running the above command ```npm install --save-dev gulp```.
 
-Now gulp will tell us what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create an empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
+Now gulp will tell us what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create an empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Lets create a default task in **gulpfile.js** as below:
 
 **gulpfile.js**
 ```JavaScript
@@ -41,7 +41,7 @@ Hello from default gulp task.
 Finished 'default' after 100 μs
 ```
 
-Lets write a custom task, which will first minify/compress all the ```.js``` files from js directory then store all minified/compressed files to build/js directive, and will watch all the js files which are present in js directory, if any change happens to those ```.js``` files, then it will re-minify/re-compress all the ```.js``` files, and overwrite all old minified/compressed files with latest minified/compressed files in build/js directory.
+Lets write a custom task, which will first minify/compress all the ```.js``` files from js directory then store all minified/compressed files to build/js directive, and will watch all the js files which are present in js directory, if any change happens in those ```.js``` files, then it will re-minify/re-compress all the ```.js``` files, and overwrite all old minified/compressed files with latest minified/compressed files in build/js directory.
 
 **Updated gulpfile.js**
 ```JavaScript
@@ -67,11 +67,11 @@ gulp.task('watch', function () {
 gulp.task('default', ['scripts', 'watch']);
 ```
 
-> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files. And it remove all comments and unused code from source **JavaScript** files.
+> **NOTE** We are using ```uglify``` **npm** module for minifying/compressing ```.js``` files. And it remove all comments and unused code from source **JavaScript** files.
 
 In the above **gulpfile.js**, we have write 3 tasks:
 
-1. **scripts:** This task is for minifing all the ```.js``` files from **js** directory, and store into **build/js** directory. We are handing **error** event and printing error on console, so **Gulp** does not stops, otherwise if there will be any error while minifing the ```.js``` files, **gulp** will give error and will get stopped.
+1. **scripts:** This task is for minifying all the ```.js``` files from **js** directory, and store into **build/js** directory. We are handing **error** event and printing error on console, so **Gulp** does not stops, otherwise if there will be any error while minifying the ```.js``` files, **gulp** will give error and will get stopped.
 2. **watch:** This task watches all the ```.js``` files from **js** directory, and any of the ```.js``` files get changed, it will execute **scripts** task.
 3. **default:** This is our **default** task, which first executes **scripts** task and then **watch** task.
 
