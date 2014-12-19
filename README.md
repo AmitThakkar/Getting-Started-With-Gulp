@@ -13,6 +13,7 @@ Lets first install **Gulp** into the system:
 1. Install **Gulp** globally with command ```npm install -g gulp```. If you face permission error, run same command with sudo as ```sudo npm install -g gulp```.
 
 2. Install **Gulp** into your project with command ```npm install --save-dev gulp```. If you face permission error, run same command with sudo as ```sudo npm install --save-dev gulp```.
+
 **NOTE:** In your project directory, a ```node_modules``` named directory will be created after running the above command ```npm install --save-dev gulp```.
 
 Now gulp will say what we have to do next, execute simply ```gulp``` command, it will print error **No gulpfile found**. Yup, that is our next step. Create an empty ```gulpfile.js``` file. Now again run ```gulp``` command, it will print error **Task 'default' is not in your gulpfile**. Yup, that is our next step, lets create a default task in **gulpfile.js** as below:
@@ -29,7 +30,7 @@ gulp.task('default', function () {
 
 **Gulp** provides ```gulp.task()``` api to create custom tasks, first argument is name of task, and second argument can be task **function** or array of task **functions** which will be execute when that task will be executed.
 
-When we type ```gulp``` command, then **Gulp** will execute task, which is followed by ```gulp``` command. e.g. ```gulp t1``` will execute t1 named task. And if we do not provide any task name after ```gulp``` command then by default it executes **default** task. So when we were typing only ```gulp```, it was showing error message **Task 'default' is not in your gulpfile**.
+When we type ```gulp``` command, then **Gulp** will execute task, which is followed by ```gulp``` command. e.g. ```gulp t1``` will execute **t1** named task. And if we do not provide any task name after ```gulp``` command then by default it executes **default** task. So when we were typing only ```gulp```, it was showing error message **Task 'default' is not in your gulpfile**.
 
 Now type ```gulp``` or ```gulp default``` it will execute default task and will print our ```console.log```.
 
@@ -66,7 +67,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['scripts', 'watch']);
 ```
 
-> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files. And it remove all comments and unused code from source JavaScript files.
+> **NOTE** We are using ```uglify``` **npm** module for minifing/compressing ```.js``` files. And it remove all comments and unused code from source **JavaScript** files.
 
 In the above **gulpfile.js**, we have write 3 tasks:
 
