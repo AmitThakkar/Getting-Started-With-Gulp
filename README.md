@@ -1,6 +1,6 @@
-#Getting Started with Gulp
+#Getting Started with GulpJS
 
-####This repository contains demo for using guild with Gulp.
+####This repository contains Getting started guild with GulpJS.
 
 Now a days, a **JavaScript** task runner is getting very famous. Yes, its name is **Gulp**. Many of us get confused between **Gulp** and **Grunt**. But why did I choose **Gulp**?
 
