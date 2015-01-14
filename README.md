@@ -76,3 +76,7 @@ In the above **gulpfile.js**, we have write 3 tasks:
 3. **default:** This is our **default** task, which first executes **scripts** task and then **watch** task.
 
 **Note**: If you want execute only **watch** task or  **scripts** task, then type ```gulp watch``` or ```gulp scripts``` respectively.
+
+You can checkout full working source code from this [link](https://github.com/AmitThakkar/Getting-Started-With-Gulp).
+
+You can read the next part of the series [here](http://codechutney.in/blog/nodejs/getting-started-with-gulp/).
