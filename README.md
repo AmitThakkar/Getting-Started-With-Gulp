@@ -79,4 +79,4 @@ In the above **gulpfile.js**, we have write 3 tasks:
 
 You can checkout full working source code from this [link](https://github.com/AmitThakkar/Getting-Started-With-Gulp).
 
-You can read the next part of the series [here](http://codechutney.in/blog/nodejs/getting-started-with-gulp/).
+You can read the next part of the series [here](http://codechutney.in/blog/nodejs/getting-started-with-gulpjs-part-2/).
