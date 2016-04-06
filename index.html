@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting-started-with-gulp by AmitThakkar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Getting-started-with-gulp</h1>
+      <h2 class="project-tagline">This repository contains getting started guild with GulpJS.</h2>
+      <a href="https://github.com/AmitThakkar/Getting-Started-With-Gulp" class="btn">View on GitHub</a>
+      <a href="https://github.com/AmitThakkar/Getting-Started-With-Gulp/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/AmitThakkar/Getting-Started-With-Gulp/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="getting-started-with-gulpjs" class="anchor" href="#getting-started-with-gulpjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started with GulpJS</h1>
+
+<h4>
+<a id="this-repository-contains-getting-started-guild-with-gulpjs" class="anchor" href="#this-repository-contains-getting-started-guild-with-gulpjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This repository contains Getting started guild with GulpJS.</h4>
+
+<p>Now a days, a <strong>JavaScript</strong> task runner is getting very famous. Yes, its name is <strong>Gulp</strong>. Many of us get confused between <strong>Gulp</strong> and <strong>Grunt</strong>. But why did I choose <strong>Gulp</strong>?</p>
+
+<blockquote>
+<p><strong>Gulp</strong> is faster and simpler then <strong>Grunt</strong>. And I prefer <strong>Gulp</strong>, because we write <strong>Gulp</strong> tasks in <strong>JavaScript</strong> language, and as I am <strong>JavaScript</strong> lover + developer so I feel pretty happy and confident to write <strong>Gulp</strong> tasks. Trust me. if you are <strong>JavaScript</strong> developer/lover then you are going to love <strong>Gulp</strong> task runner.</p>
+</blockquote>
+
+<p>We are not going to discuss <strong>Gulp</strong> vs <strong>Grunt</strong> in details. You will find loads of materials, which discuss <strong>Gulp</strong> vs <strong>Grunt</strong>. Here we will learn how to write <strong>Gulp</strong> tasks.</p>
+
+<p>Lets first install <strong>Gulp</strong> into the system:</p>
+
+<ol>
+<li><p>Install <strong>Gulp</strong> globally with command <code>npm install -g gulp</code>. If you face permission error, run same command with sudo as <code>sudo npm install -g gulp</code>.</p></li>
+<li><p>Install <strong>Gulp</strong> into your project with command <code>npm install --save-dev gulp</code>. If you face permission error, run same command with sudo as <code>sudo npm install --save-dev gulp</code>.</p></li>
+</ol>
+
+<p><strong>NOTE:</strong> In your project directory, a <code>node_modules</code> named directory will be created after running the above command <code>npm install --save-dev gulp</code>.</p>
+
+<p>Now gulp will tell us what we have to do next, execute simply <code>gulp</code> command, it will print error <strong>No gulpfile found</strong>. Yup, that is our next step. Create an empty <code>gulpfile.js</code> file. Now again run <code>gulp</code> command, it will print error <strong>Task 'default' is not in your gulpfile</strong>. Lets create a default task in <strong>gulpfile.js</strong> as below:</p>
+
+<p><strong>gulpfile.js</strong></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">//  Requiring gulp</span>
+<span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
+<span class="pl-c">// Defining default task, which will execute when we simply type gulp.</span>
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>Hello from default gulp task.<span class="pl-pds">"</span></span>);
+});</pre></div>
+
+<p><strong>Gulp</strong> provides <code>gulp.task()</code> api to create custom tasks, first argument is name of task, and second argument can be task <strong>function</strong> or array of task <strong>functions</strong> which will be execute when that task will be executed.</p>
+
+<p>When we type <code>gulp</code> command, then <strong>Gulp</strong> will execute task, which is followed by <code>gulp</code> command. e.g. <code>gulp t1</code> will execute <strong>t1</strong> named task. And if we do not provide any task name after <code>gulp</code> command then by default it executes <strong>default</strong> task. So when we were typing only <code>gulp</code>, it was showing error message <strong>Task 'default' is not in your gulpfile</strong>.</p>
+
+<p>Now type <code>gulp</code> or <code>gulp default</code> it will execute default task and will print our <code>console.log</code>.</p>
+
+<pre lang="Output"><code>Using gulpfile ~/Projects/Getting-Started-With-Gulp/gulpfile.js
+Starting 'default'...
+Hello from default gulp task.
+Finished 'default' after 100 μs
+</code></pre>
+
+<p>Lets write a custom task, which will first minify/compress all the <code>.js</code> files from js directory then store all minified/compressed files to build/js directive, and will watch all the js files which are present in js directory, if any change happens in those <code>.js</code> files, then it will re-minify/re-compress all the <code>.js</code> files, and overwrite all old minified/compressed files with latest minified/compressed files in build/js directory.</p>
+
+<p><strong>Updated gulpfile.js</strong></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>),
+    uglify <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-uglify<span class="pl-pds">'</span></span>);
+<span class="pl-k">function</span> <span class="pl-en">errorLog</span>(<span class="pl-smi">error</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">error</span>(error);
+    <span class="pl-v">this</span>.<span class="pl-en">emit</span>(<span class="pl-s"><span class="pl-pds">'</span>end<span class="pl-pds">'</span></span>);
+}
+<span class="pl-c">// Scripts Task</span>
+<span class="pl-c">// Uglify</span>
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>scripts<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+    <span class="pl-smi">gulp</span>.<span class="pl-en">src</span>(<span class="pl-s"><span class="pl-pds">'</span>js/*.js<span class="pl-pds">'</span></span>)
+        .<span class="pl-en">pipe</span>(<span class="pl-en">uglify</span>())
+        .<span class="pl-en">on</span>(<span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, errorLog)
+        .<span class="pl-en">pipe</span>(<span class="pl-smi">gulp</span>.<span class="pl-en">dest</span>(<span class="pl-s"><span class="pl-pds">'</span>build/js<span class="pl-pds">'</span></span>));
+});
+<span class="pl-c">// Watch Task</span>
+<span class="pl-c">// Watches JS</span>
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>watch<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+    <span class="pl-smi">gulp</span>.<span class="pl-c1">watch</span>(<span class="pl-s"><span class="pl-pds">'</span>js/*.js<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>scripts<span class="pl-pds">'</span></span>]);
+});
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>default<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>scripts<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>watch<span class="pl-pds">'</span></span>]);</pre></div>
+
+<blockquote>
+<p><strong>NOTE</strong> We are using <code>uglify</code> <strong>npm</strong> module for minifying/compressing <code>.js</code> files. And it remove all comments and unused code from source <strong>JavaScript</strong> files.</p>
+</blockquote>
+
+<p>In the above <strong>gulpfile.js</strong>, we have write 3 tasks:</p>
+
+<ol>
+<li>
+<strong>scripts:</strong> This task is for minifying all the <code>.js</code> files from <strong>js</strong> directory, and store into <strong>build/js</strong> directory. We are handing <strong>error</strong> event and printing error on console, so <strong>Gulp</strong> does not stops, otherwise if there will be any error while minifying the <code>.js</code> files, <strong>gulp</strong> will give error and will get stopped.</li>
+<li>
+<strong>watch:</strong> This task watches all the <code>.js</code> files from <strong>js</strong> directory, and any of the <code>.js</code> files get changed, it will execute <strong>scripts</strong> task.</li>
+<li>
+<strong>default:</strong> This is our <strong>default</strong> task, which first executes <strong>scripts</strong> task and then <strong>watch</strong> task.</li>
+</ol>
+
+<p><strong>Note</strong>: If you want execute only <strong>watch</strong> task or  <strong>scripts</strong> task, then type <code>gulp watch</code> or <code>gulp scripts</code> respectively.</p>
+
+<p>You can checkout full working source code from this <a href="https://github.com/AmitThakkar/Getting-Started-With-Gulp">link</a>.</p>
+
+<p>You can read the next part of the series <a href="http://codechutney.in/blog/nodejs/getting-started-with-gulpjs-part-2/">here</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/AmitThakkar/Getting-Started-With-Gulp">Getting-started-with-gulp</a> is maintained by <a href="https://github.com/AmitThakkar">AmitThakkar</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
