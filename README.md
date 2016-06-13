@@ -77,6 +77,14 @@ In the above **gulpfile.js**, we have write 3 tasks:
 
 **Note**: If you want execute only **watch** task or  **scripts** task, then type ```gulp watch``` or ```gulp scripts``` respectively.
 
-You can checkout full working source code from this [link](https://github.com/AmitThakkar/Getting-Started-With-Gulp).
-
 You can read the next part of the series [here](http://codechutney.in/blog/nodejs/getting-started-with-gulpjs-part-2/).
+
+Follow Me
+---
+[Github](https://github.com/AmitThakkar)
+
+[Twitter](https://twitter.com/amit_thakkar01)
+
+[LinkedIn](https://in.linkedin.com/in/amitthakkar01)
+
+[More Blogs By Me](http://amitthakkar.github.io/)
